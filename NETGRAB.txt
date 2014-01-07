@@ -1,0 +1,316 @@
+______________________________________________________________________________
+2004/04/10
+NETGRAB had been released as Open Source under the GNU GPL License.
+
+______________________________________________________________________________
+
+
+        NETGRAB (c)1995, 1997 Martin L. Roth & Stephen Loomis v1.0
+
+______________________________________________________________________________
+
+
+-1 Table of Contents:
+
+-1. Table of Contents.
+ 0. Legalistic mumbo jumbo.
+ 1. History:  Whats new in this version.
+ 2.  What is Netgrab for OS/2?
+ 3.  How do I install Netgrab?
+ 4.  How do I use Netgrab?
+ 4.0   FILE    -  Run Netgrab on files on your very own hard drive.
+ 4.1   FINGER  -  A finger client of your very own.
+ 4.2   FTP     -  Download files from your favorite ftp site.
+ 4.3   GOPHER  -  Get groundhogs off the internet.
+ 4.4   HTTP    -  Pull in files off of the World Wide Waste. (er... Web)
+ 4.5   NNTP    -  Get lists of available news groups and dl articles.
+ 4.6   POPMAIL -  Check to see how much mail you have and/or get it all.
+ 4.7   TIME    -  See what time another machine thinks it is.
+ 4.8   Options -
+ 5.  Where should I send comments and complaints?
+ 6.  Known bugs and what's planned.
+ 7.  How do i register?
+ 8.  About the authors.
+
+______________________________________________________________________________
+
+0. DISCLAIMER
+
+THIS PROGRAM IS SUPPLIED "AS IS", AND WITHOUT ANY WARRANTIES WHATSOEVER
+WHETHER EXPRESS OR IMPLIED. YOU USE NETGRAB ENTIRELY AT YOUR OWN RISK. I WILL
+ACCEPT NO LIABILITY FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, INDIRECT LOSS
+OR DAMAGE DUE TO LOSS OF DATA, PROFITS, HAIR OR ANY OTHER REASON, INCURRED BY
+ANYONE FROM THE USE OR THE PURPORTED USE OF NETGRAB OR BY FOLLOWING THE
+DOCUMENTATION INCLUDED HEREIN, FOR ANY PURPOSE WHATSOEVER.  IN NO EVENT SHALL
+MY LIABILITY FOR ANY DAMAGES EVER EXCEED THE PRICE PAID FOR THE LICENSE TO USE
+THE SOFTWARE, REGARDLESS OF THE FORM OF THE CLAIM.  THE PERSON USING THE
+SOFTWARE BEARS ALL RISKS AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE.
+
+NETGRAB WORKS FINE FOR ME.  IF IT DOESN'T WORK FOR YOU, PLEASE SEND ME EMAIL
+TELLING ME WHAT HAPPENS AND WHAT YOU'RE TRYING TO DO - I'LL SEE WHAT I CAN DO.
+I MAY COME UP WITH A SOLUTION, BUT THIS PACKAGE COMES WITH ABSOLUTELY NO
+GURANTEES WHATSOEVER (SEE ABOVE).  IF IT BREAKS, YOU KEEP ALL THE PIECES.
+
+______________________________________________________________________________
+
+1. What's new?
+
+   v1.0  - First GA release.
+______________________________________________________________________________
+
+2.  What is netgrab?
+
+Netgrab is a full featured command line client mainly for use in batch file
+programming.  It incoprorates FINGER, FTP, GOPHER, HTTP, NNTP, POPMAIL, and
+TIME clients in one program.
+______________________________________________________________________________
+
+3.  How do i install netgrab?
+
+1) Unzip netgrab1.zip into a temp directory of your choice.  You have probably
+   already done this, because that's where this doc file is stored.
+
+2) Delete all the useless crap that comes with it, like the fileid.diz and any
+   other useless files I may decide to include with it.
+
+3) Copy netgrab.* to someplace in your path.
+
+or
+
+2) after reading this doc file, get pissed off and delete everything.
+   "format c:" usually acomplishes this nicely.
+
+______________________________________________________________________________
+
+4.  How do i use netgrab?
+
+Generally, you netgrab is run by typing netgrab and then tacking on a url at
+the end.  More explicit instructions follow.
+______________________________________________________________________________
+
+4.0 FILE://
+General usage:
+   netgrab -options file://<loadfile> [savefile]
+Example:
+   netgrab -s file://intro.html intro.txt
+Description:
+   loads file intro.html, strips the html codes out of it, and saves it to
+   intro.txt
+
+______________________________________________________________________________
+
+4.1 FINGER://
+General usage:
+   netgrab -options finger://[user@]<site>[:port] [localfile]
+      default port:  79
+Example:
+   netgrab finger://mom@beethoven.cs.colostate.edu
+Description:
+   logs onto port 79 at beethoven.cs.colostate.edu and gets information on
+   the user 'mom'
+
+To get a list of people on a server, leave out the username
+Example:
+   netgrab finger://@beethoven.cs.colostate.edu beethovn.txt
+Description:
+   logs onto beethoven.cs.colostate.edu and shows info about who is on the
+   system currently, then saves this to beethovn.txt
+______________________________________________________________________________
+
+4.2  FTP://
+General usage:
+   netgrab -opts ftp://[[user][:pass]@}<site>[:port]/[filename] [localfile]
+      default user     :  anonamous
+              password :  os2user@
+              port     :  21 (standard ftp port)
+              localfile:  (same as remote filename)
+
+
+Standard ftp to a remote site anonamously, using defaults.
+Usage:
+   netgrab -opts ftp://<site>/[filename] [localfile]
+Example:
+   netgrab ftp://hobbes.nmsu.edu/pub/00index.txt
+Description:
+   logs into hobbes.nmsu.edu on port 21 with username of anonymous
+   and a password of os2user@.  It then changes to the /pub/ directory
+   and gets the file 00index.txt which is saved in the current directory
+   as 00index.txt
+
+
+Login to a site using an email address as a password
+Usage:
+   netgrab -opts ftp://[[user][:'me@my.com'@]]<site>[:port]/[file] [localfile]
+Example:
+   netgrab ftp://ftp:'bubba@home.com'@hobbes.nmsu.edu/pub/00index.txt hobs.idx
+Description:
+   logs into hobbes.nmsu.edu with username of ftp and a password of
+   bubba@home.com.  It then changes to the /pub/ directory
+   and gets the file 00index.txt which is saved in the current directory
+   as hobs.idx
+
+
+To get a directory using FTP
+Usage:
+   netgrab -opts ftp://[[user][:pass]@}<site>[:port]/ [localfile]
+Example:
+   netgrab ftp://hobbes.nmsu.edu/pub/ pub.dir
+Description:
+   logs into hobbes with default user & password, cds to pub and gets a dir
+   which is saved to the file pub.dir
+______________________________________________________________________________
+
+4.3  GOPHER://
+General usage:
+
+Usage:
+Example:
+Description:
+
+______________________________________________________________________________
+
+4.4 HTTP://
+General usage:
+   netgrab -options http://<site>[:port]/<pathname>/<filename> [localfile]
+   The http client currently only grabs the specific url that you put in.
+
+Usage:
+   netgrab -options http://<site>[:port]/<pathname>/<filename> [localfile]
+Example:
+   netgrab http://hobbes.nmsu.edu/pub/incoming/index.html hobbes.idx
+
+If you are trying to use netgrab to do a search or anything that uses the '&'
+character, you need to put the entire url into quotes.  This is because of the
+way the command line works, not because ofnetgrab itself. You also need to
+supply a local filename to save to.  Netgrab will try to save to some very
+strange names otherwise.
+
+Example:
+   netgrab "http://hobbes.nmsu.edu/cgi-bin/search?sh=1&key=netg&stype=all"
+           search.htm
+______________________________________________________________________________
+
+4.5 NNTP://
+General usage:
+   netgrab -options nntp://<site>[:port]/<group>/[1st][:last],
+           [-don't get],[[+]do get] [localfile]
+       Default port         :  119
+               First article:  0
+               Last article : (last article)
+Example:
+   Netgrab nntp://news/comp.os.os2.misc/0,os2,+os/2,warp os2news.txt
+Description:
+   logs onto news server on port 119 and gets all the articles that contain
+   the word 'os2' or 'os/2' but NOT the word 'warp' in the subject.  Note
+   that the include and exclude words are NOT case sensitive.
+
+To get a list of Newsgroups available from a server
+Usage:
+   netgrab nntp://site[:port] [localfile]
+Example:
+   netgrab nntp://news newslist.txt
+Description:
+   Logs onto the news server and gets a list of available newsgroups.
+   The list is sorted alphabetically and saved to newslist.txt.
+______________________________________________________________________________
+
+4.6 POPMAIL://
+General Usage:
+   netgrab -opts popmail://<user><:pass>@<site>[:port]/[1st][:last] [localfile]
+       Default port         :  110
+               first message:  1
+               last message :  (last message)
+Example:
+   netgrab -d popmail://me:mypass@myisp.com mymail.txt
+Description:
+   logs onto myisp.com on port 110 using the username 'me' and the password
+   'mypass', then downloads all the mail, deleting it from the server when
+   done.
+______________________________________________________________________________
+
+4.7 TIME://
+General Usage:
+   netgrab -options time://<site>[:port] [localfile]
+       Default port:  13
+Example:
+   netgrab time://netcom.com
+Description:
+   Connects to netcom.com on port 13 and reports the time on the local
+   machine and at netcom.com.  (Remember that the remote machine may EASILY
+   be in a different time zone.)  The default is to NOT save a file.
+______________________________________________________________________________
+
+4.8 Options
+
+  -a   - append to localfile instead of overwriting.
+         works on: NNTP, TIME, FINGER
+
+  -A   - FTP in ASCII mode instead of binary.
+         works on:  FTP
+
+  -b   - Beep when finished.
+         works on:  ALL
+
+  -d   - Delete mail after receiving.
+         works on:  MAIL only
+
+  -h   - just get news subjects - no articles or headers.
+         works on:  NNTP only
+
+  -l   - save session to log file.
+         (netgrab.log in the dir set in your ETC environment variable.)
+         works on:  ALL
+
+  -n   - don't get news headers.
+         works on:  NNTP
+
+  -o   - skip file instead of overwriting.
+         works on:  FTP, HTTP
+
+  -q   - quiet mode - does not print anything when running.
+         works on:  ALL
+
+  -s   - strips all html codes.
+         works on:  FILE, HTTP
+
+  -t x - times out after x seconds.  Default = 120
+         0 disables timeout
+         works on:  All but FILE
+
+  -u x - change user-agent name sent to server.  Default = OS/2 Netgrab
+         works on:  HTTP
+
+  -w   - Watch all messages from server.
+         works on:  All but FILE
+
+  -z   - Do *NOT* use this option
+
+______________________________________________________________________________
+5.0  Where should I send comments and complaints.
+
+Email any thoughts to me at:
+   mroth@mailcity.com
+______________________________________________________________________________
+
+6.0 Known Bugs and what's planned.
+
+Bugs:  None currently known - I'm sure there are many though...
+
+Planned:  a GUI front end.
+          add an option to have TIME:// synchronize machine time.
+
+______________________________________________________________________________
+
+7.0 How to Register.
+
+
+______________________________________________________________________________
+
+8.0  About the authors:
+
+   Martin Roth
+
+   Stephen Loomis
+______________________________________________________________________________
+
+

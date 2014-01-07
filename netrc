@@ -1,0 +1,6 @@
+machine hobbes.nmsu.edu login ftp password tidbit@ezlink.com
+machine localhost login gully password ack macdef init
+bin
+hash
+prompt
+
